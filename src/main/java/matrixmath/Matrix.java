@@ -1,4 +1,4 @@
-package math;
+package matrixmath;
 
 public class Matrix {
     private double[][] data;
