@@ -50,3 +50,21 @@ mvn clean package
 
 Si sale ```BUILD SUCCESS```, Maven crea el directorio ```/target``` y mete dentro el archivo ```calculadora-matrices-1.0-SNAPSHOT.jar```.
 >Este es el archivo "motor" que se carga desde el script de Python.
+
+Una vez ejecutado el comando `mvn clean package` crea dentro de `/target` las `/classes/`, es decir traduce `Main.java` a `Main.class` con cada archivo `.java`. La estructura de `/target` que queda luego de la primera ejecución de `mvn clean package` es:
+
+```bash
+    ├── calculadora-matrices-1.0-SNAPSHOT.jar
+    ├── classes
+    │   └── math
+    │       ├── Main.class
+    │       ├── Matrix.class
+    │       └── MatrixService.class
+    ├── generated-sources
+    │   └── annotations
+    ├── maven-archiver
+    │   └── pom.properties
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+```
