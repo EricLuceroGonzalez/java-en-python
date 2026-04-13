@@ -1,0 +1,11 @@
+# Compilados de Java
+*.class
+# Carpeta de salida de Maven
+target/
+# Archivos de configuración de IDEs
+.settings/
+.project
+.classpath
+.vscode/
+.idea/
+*.iml
