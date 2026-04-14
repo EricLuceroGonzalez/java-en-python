@@ -33,7 +33,8 @@ def probar_motor_java():
     C = [[1.0, -3.0, 2.0], [2.0, 5.0, 0.0], [0.0, -1.0, -2.0]]  # invertible
     D = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]  # no invertible
 
-    matriz = matriz_en_main
+    # matriz = matriz_en_main
+    matriz = D
 
     # Las llamadas directas desde Python permiten manipular objetos Java (Matrix, MatrixDet) como si fueran tipos nativos, facilitando la integración de la nueva metaheurística.
     # Instanciamos objetos Java

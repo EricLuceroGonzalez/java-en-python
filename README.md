@@ -22,6 +22,10 @@ Para probar que el motor Java funciona correctamente:
 java -cp target/calculadora-matrices-1.0-SNAPSHOT.jar math.Main
 ```
 
+> [!WARNING]  
+> Cada vez que se hacen cambios en java se debe actualizar todo el `/target` y el `.jar` ejecutando `mvn clean package`
+>
+
 ## Notas de integración
 
 Si uso JPype, tengo que pasarle la ruta del JAR al iniciar la JVM en el script de Python. Si al final decantamos por Py4J, se tiene que dejar el Main de Java corriendo con el GatewayServer activo para que Python pueda conectar.
@@ -126,22 +130,19 @@ En este modelo, Python "engulle" a la JVM. Todo ocurre dentro del mismo proceso 
     style C fill:#fff,stroke-dasharray: 5 5
 ```
 
-1. Preparación del motor Java
-Es necesario compilar el proyecto con Maven para generar el artefacto en la carpeta target/:
+1. __Preparación del motor Java:__ Es necesario compilar el proyecto con Maven para generar el artefacto en la carpeta target/:
 
 ```bash
 mvn clean package
 ```
 
-2. Configuración del entorno Python
-Instalar la dependencia mediante Pipenv:
+1. __Configuración del entorno Python:__ Instalar la dependencia mediante Pipenv:
 
 ```bash
 pipenv install jpype1
 ```
 
-3. Código de integración
-El script de Python debe apuntar al JAR generado en target/ antes de realizar los imports:
+3. __Código de integración:__ El script de Python debe apuntar al JAR generado en target/ antes de realizar los imports:
 
 ```python
     jar_path = os.path.join("target", "calculadora-matrices-1.0-SNAPSHOT.jar")
@@ -150,7 +151,7 @@ El script de Python debe apuntar al JAR generado en target/ antes de realizar lo
 
 ### Py4J (Arquitectura Cliente-Servidor)
 
-Dos procesos independientes. Se hablan por la red local (localhost) a través de un puerto. Si Java se cuelga, Python sigue vivo (y viceversa).
+Dos procesos independientes. Py4J establece un puente a través de sockets TCP/IP. Requiere que un proceso Java (Servidor) esté activo para recibir peticiones desde el cliente (Python).
 
 ```mermaid
     graph LR
@@ -170,3 +171,71 @@ Dos procesos independientes. Se hablan por la red local (localhost) a través de
     style D fill:#f89820,stroke:#333,color:#000
     style C fill:#444,color:#fff
 ```
+
+1. __Dependencia en Java:__ Añadir al archivo `pom.xml`:
+
+```XML
+<dependency>
+    <groupId>net.sf.py4j</groupId>
+    <artifactId>py4j</artifactId>
+    <version>0.10.9.7</version>
+</dependency>
+```
+
+2. __Servidor Java (Gateway):__ Modificar el método main en `src/main/java/matrixmath/Main.java`:
+
+```java
+public static void main(String[] args) {
+    GatewayServer server = new GatewayServer(new Main());
+    server.start();
+    System.out.println("Servidor Py4J activo");
+}
+```
+
+3. __Código de integración en Python:__ Instalar la librería: pipenv install py4j.
+
+```python
+from py4j.java_gateway import JavaGateway
+
+# Conexión al proceso Java externo
+gateway = JavaGateway()
+app = gateway.entry_point
+
+# Acceso a los servicios definidos en el Main de Java
+service = app.getDetService()
+matriz = app.createMatrix([[1.0, 0.0], [0.0, 1.0]])
+
+print(f"Resultado: {service.calculateDeterminant(matriz)}")
+```
+
+### Lanzamiento del Servidor Java (Terminal 1)
+
+Antes de ejecutar el script de Python, el servidor Java debe estar "escuchando". Tienes dos formas de lanzarlo:
+
+- __Opción A__: Usando Maven (más fácil). _Maven se encarga de gestionar todas las librerías (incluida la de Py4J)_:
+
+```Bash
+mvn exec:java -Dexec.mainClass="matrixmath.Main"
+```
+
+- __Opción B__: Usando el JAR directamente. _Incluir la librería de Py4J en el classpath manual_:
+
+```Bash
+java -cp "target/calculadora-matrices-1.0-SNAPSHOT.jar:ruta/a/py4j.jar" matrixmath.Main
+```
+
+_(Nota: En Mac, el separador de carpetas es : y en Windows es ;)._
+
+### Ejecución del Cliente Python (Terminal 2)
+
+Una vez que en la Terminal 1 esté el Servidor Py4J activo, se lanza el __cliente Python__ con el script:
+
+```Bash
+pipenv run python test_py4j.py
+```
+
+> [!WARNING]  
+>**Diferencias en el manejo de tipos (Matrices 2D)**
+>- **JPype**: Conversión transparente de `list[list]` a `double[][]`. Alta eficiencia.
+>- **Py4J**: Requiere creación manual del array en la JVM mediante `gateway.new_array(gateway.jvm.double, rows, cols)`. Cada asignación de celda implica una comunicación por socket, lo que aumenta la latencia en matrices >grandes.
+>
