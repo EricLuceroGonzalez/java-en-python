@@ -208,7 +208,7 @@ matriz = app.createMatrix([[1.0, 0.0], [0.0, 1.0]])
 print(f"Resultado: {service.calculateDeterminant(matriz)}")
 ```
 
-### Lanzamiento del Servidor Java (Terminal 1)
+#### 1. Lanzamiento del Servidor Java (Terminal 1)
 
 Antes de ejecutar el script de Python, el servidor Java debe estar "escuchando". Tienes dos formas de lanzarlo:
 
@@ -226,7 +226,7 @@ java -cp "target/calculadora-matrices-1.0-SNAPSHOT.jar:ruta/a/py4j.jar" matrixma
 
 _(Nota: En Mac, el separador de carpetas es : y en Windows es ;)._
 
-### Ejecución del Cliente Python (Terminal 2)
+#### 2. Ejecución del Cliente Python (Terminal 2)
 
 Una vez que en la Terminal 1 esté el Servidor Py4J activo, se lanza el __cliente Python__ con el script:
 
@@ -242,6 +242,8 @@ pipenv run python test_py4j.py
 
 ## Comparacion de 10 ejecuciones con la matriz "C"
 
+Se definen varias matrices invertibles y no invertibles de 3x3 y 2x2 para probar la ejecución de ambas librerías. tomamos la matriz "C" para probar 10 ejecuciones de cada una.
+
 ### Resultado de Jpype
 
 ```bash
@@ -256,7 +258,7 @@ pipenv run python test_py4j.py
     [0.077, -0.038, -0.423]
 
 
-    PROMEDIO JPYPE: 0.000647 seg
+    PROMEDIO JPYPE: 0.000647 segundos
 ```
 
 ### Resultado de Py4j
@@ -272,5 +274,50 @@ pipenv run python test_py4j.py
     [-0.154, 0.077, -0.154]
     [0.077, -0.038, -0.423]
 
-    PROMEDIO PY4J: 0.005136 seg
+    PROMEDIO PY4J: 0.005136 segundos
+```
+
+## Resumen del flujo de ejecución:
+
+Pasos para ejecutar el método `main` de una clase Java utilizando tanto __JPype__ como __Py4J__.
+
+```mermaid
+    flowchart TD
+    %% Nodos de Inicio y Preparación Común (Java)
+    Start([Inicio: Ejecutar Main en Java]) --> JavaSetup["Crear o Modificar Main.java<br/>Incluir lógica en 'public static void main'"]
+    JavaSetup --> MavenBuild["Compilar y Empaquetar:<br/>Ejecutar 'mvn clean package'"]
+    MavenBuild --> JarVerify{¿Se generó el JAR en target/?}
+    JarVerify -- No --> MavenBuild
+    JarVerify -- Sí --> ChooseLib
+
+    %% Bifurcación de Decisión
+    ChooseLib{¿Qué librería usar?}
+
+    %% === Rama JPype ===
+    ChooseLib -- JPype --> JPypeSetup["Python: Instalar jpype1<br/>'pipenv install jpype1'"]
+    JPypeSetup --> JPypeStart["Python: Iniciar JVM<br/>'jpype.startJVM(classpath=[...])'"]
+    JPypeStart --> JPypeImport["Python: Importar Clase<br/>'from paquete import Main'"]
+    JPypeImport --> JPypeExec["Python: Llamar al método main<br/>'Main.main([])'"]
+    JPypeExec --> JPypeStdout["El System.out de Java aparece<br/>en la terminal de Python"]
+    JPypeStdout --> End
+
+    %% === Rama Py4J ===
+    ChooseLib -- Py4J --> Py4JSetup["Python: Instalar py4j<br/>'pipenv install py4j'"]
+    Py4JSetup --> Terminal1[Abrir Terminal 1: Servidor]
+    Terminal1 --> Py4JServerStart["Java: Iniciar GatewayServer<br/>mvn exec:java -Dexec.mainClass='...'"]
+    Py4JServerStart --> Py4JWait["Esperar mensaje: 'Servidor activo'"]
+    Py4JWait --> Terminal2[Abrir Terminal 2: Cliente]
+    Terminal2 --> Py4JClientConnect["Python: Conectar al Gateway<br/>'gateway = JavaGateway()'"]
+    Py4JClientConnect --> Py4JExec["Python: Llamar al main (si está expuesto)<br/>'gateway.entry_point.main([])'"]
+    Py4JExec --> Py4JStdout["El System.out de Java aparece<br/>en la Terminal 1 (Servidor)"]
+    Py4JStdout --> End
+
+    %% Nodos de Fin
+    End([Fin: Main Ejecutado])
+
+    %% Estilos
+    style ChooseLib fill:#f9f,stroke:#333,stroke-width:2px
+    style MavenBuild fill:#ff9,stroke:#333,stroke-width:2px
+    style JPypeExec fill:#ccf,stroke:#333,stroke-width:2px
+    style Py4JServerStart fill:#fcf,stroke:#333,stroke-width:2px
 ```
