@@ -239,3 +239,38 @@ pipenv run python test_py4j.py
 >- **JPype**: Conversión transparente de `list[list]` a `double[][]`. Alta eficiencia.
 >- **Py4J**: Requiere creación manual del array en la JVM mediante `gateway.new_array(gateway.jvm.double, rows, cols)`. Cada asignación de celda implica una comunicación por socket, lo que aumenta la latencia en matrices >grandes.
 >
+
+## Comparacion de 10 ejecuciones con la matriz "C"
+
+### Resultado de Jpype
+
+```bash
+    C= 
+    1.00    -3.00     2.00 
+    2.00     5.00     0.00 
+    0.00    -1.00    -2.00 
+    Determinante: -26.0
+    La matriz es invertible.
+    [0.385, 0.308, 0.385]
+    [-0.154, 0.077, -0.154]
+    [0.077, -0.038, -0.423]
+
+
+    PROMEDIO JPYPE: 0.000647 seg
+```
+
+### Resultado de Py4j
+
+```bash
+    C= 
+    1.00    -3.00     2.00 
+    2.00     5.00     0.00 
+    0.00    -1.00    -2.00 
+    Determinante: -26.0
+    La matriz es invertible.
+    [0.385, 0.308, 0.385]
+    [-0.154, 0.077, -0.154]
+    [0.077, -0.038, -0.423]
+
+    PROMEDIO PY4J: 0.005136 seg
+```
