@@ -1,3 +1,6 @@
-matrixmath/MatrixService.class
 matrixmath/Main.class
+math/MatrixService.class
+math/Matrix.class
+math/Main.class
+matrixmath/MatrixDet.class
 matrixmath/Matrix.class

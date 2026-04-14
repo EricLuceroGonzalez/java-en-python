@@ -1,4 +1,4 @@
-package matrixmath;
+package math;
 
 public class MatrixService {
 

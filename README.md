@@ -68,3 +68,105 @@ Una vez ejecutado el comando `mvn clean package` crea dentro de `/target` las `/
         └── maven-compiler-plugin
             └── compile
 ```
+
+### Estructura de Clases y funciones
+
+Diagrama de las clases dentro de `/src`
+
+```mermaid
+    classDiagram
+        class Main {
+            +main(args: String[])
+            +getDetService() MatrixDet
+            +createMatrix(data: double[][]) Matrix
+        }
+
+        class Matrix {
+            -data: double[][]
+            +Matrix(data: double[][])
+            +getData() double[][]
+            +print()
+        }
+
+        class MatrixDet {
+            +calculateDeterminant(m: Matrix) double
+            +calculateInverse(m: Matrix) Matrix
+            +isInvertible(m: Matrix) boolean
+        }
+
+        Main ..> Matrix : "Instancia"
+        Main ..> MatrixDet : "Instancia"
+        MatrixDet ..> Matrix : "Procesa"
+```
+
+## Arquitectura de Integración: JPype vs. Py4J
+
+### JPype (Memoria Compartida)
+
+En este modelo, Python "engulle" a la JVM. Todo ocurre dentro del mismo proceso de sistema operativo, lo que permite una comunicación de baja latencia.
+
+```mermaid
+    graph TD
+    subgraph "Proceso Único (OS Process)"
+        subgraph "Entorno Python"
+            A[Script: test_jpype.py] --> B[Librería JPype1]
+        end
+        
+        B <--> C{Bridge JNI}
+        
+        subgraph "JVM (Máquina Virtual Java)"
+            C --> D[matrixmath.Matrix]
+            C --> E[matrixmath.MatrixDet]
+        end
+    end
+    
+    style A fill:#ffd43b,stroke:#333,color:#000
+    style D fill:#f89820,stroke:#333,color:#000
+    style E fill:#f89820,stroke:#333,color:#000
+    style C fill:#fff,stroke-dasharray: 5 5
+```
+
+1. Preparación del motor Java
+Es necesario compilar el proyecto con Maven para generar el artefacto en la carpeta target/:
+
+```bash
+mvn clean package
+```
+
+2. Configuración del entorno Python
+Instalar la dependencia mediante Pipenv:
+
+```bash
+pipenv install jpype1
+```
+
+3. Código de integración
+El script de Python debe apuntar al JAR generado en target/ antes de realizar los imports:
+
+```python
+    jar_path = os.path.join("target", "calculadora-matrices-1.0-SNAPSHOT.jar")
+```
+
+
+### Py4J (Arquitectura Cliente-Servidor)
+
+Dos procesos independientes. Se hablan por la red local (localhost) a través de un puerto. Si Java se cuelga, Python sigue vivo (y viceversa).
+
+```mermaid
+    graph LR
+    subgraph "Proceso Python"
+        A[Script: test_py4j.py] --> B[JavaGateway Client]
+    end
+
+    B <-->|TCP Socket Port: 25333| C[GatewayServer]
+
+    subgraph "Proceso Java (JVM)"
+        C --> D[Main.java]
+        D --> E[matrixmath.Matrix]
+        D --> F[matrixmath.MatrixDet]
+    end
+
+    style A fill:#ffd43b,stroke:#333,color:#000
+    style D fill:#f89820,stroke:#333,color:#000
+    style C fill:#444,color:#fff
+```

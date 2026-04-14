@@ -15,11 +15,14 @@ if not jpype.isJVMStarted():
     jpype.startJVM(classpath=[jar_path])
 
 # 3. Import de clases Java desde el .jar (/target) (ahora que la JVM está arriba)
-from matrixmath import Matrix, MatrixService
+from matrixmath import Matrix, MatrixDet
 from matrixmath import Main
 
+
 # Probar el método main de Java (opcional, solo para verificar que se ejecuta sin errores)
-Main.main([])
+# La llamada a Main.main([]) permite verificar que el entorno de Java es funcional y coincide con el target/jar generado por Maven.
+def probar_main_java():
+    Main.main([])
 
 
 def probar_motor_java():
@@ -32,11 +35,12 @@ def probar_motor_java():
 
     matriz = matriz_en_main
 
+    # Las llamadas directas desde Python permiten manipular objetos Java (Matrix, MatrixDet) como si fueran tipos nativos, facilitando la integración de la nueva metaheurística.
     # Instanciamos objetos Java
     matriz_java = Matrix(matriz)
-    servicio = MatrixService()
+    servicio = MatrixDet()
 
-    print("--- Resultados desde el motor Java (vía JPype) ---")
+    # Los resultados de ambos bloques deben ser idénticos (Determinante: -1.0 para la matriz de prueba).
 
     # Determinante
     det = servicio.calculateDeterminant(matriz_java)
@@ -57,8 +61,13 @@ def probar_motor_java():
 
 if __name__ == "__main__":
     inicio = time.time()
-    print("===" * 10)
+
     try:
+        print("===" * 17)
+        print("--- Resultados desde vía Java main ---")
+        probar_main_java()
+        print("===" * 17)
+        print("--- Resultados desde el motor Java (vía JPype) ---")
         probar_motor_java()
     except Exception as e:
         print(f"Error en la conexión: {e}")
@@ -67,4 +76,5 @@ if __name__ == "__main__":
         # jpype.shutdownJVM()
         pass
     fin = time.time()
+    print("===" * 17)
     print(f"Tiempo total: {fin - inicio:.5f} segundos")
