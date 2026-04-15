@@ -1,0 +1,40 @@
+.
+├── README.md
+├── errores.md
+├── estructura.txt
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           ├── math
+│           │   ├── Main.java
+│           │   ├── Matrix.java
+│           │   └── MatrixService.java
+│           └── matrixmath
+│               ├── Main.java
+│               ├── Matrix.java
+│               └── MatrixDet.java
+├── target
+│   ├── calculadora-matrices-1.0-SNAPSHOT.jar
+│   ├── classes
+│   │   ├── math
+│   │   │   ├── Main.class
+│   │   │   ├── Matrix.class
+│   │   │   └── MatrixService.class
+│   │   └── matrixmath
+│   │       ├── Main.class
+│   │       ├── Matrix.class
+│   │       └── MatrixDet.class
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── maven-archiver
+│   │   └── pom.properties
+│   └── maven-status
+│       └── maven-compiler-plugin
+│           └── compile
+│               └── default-compile
+├── test_jpype.py
+├── test_jpype_multi-t.py
+└── test_py4j.py
+
+17 directories, 21 files

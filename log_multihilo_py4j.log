@@ -1,0 +1,39 @@
+2026-04-15 18:54:33,386 [INFO] ====================================
+2026-04-15 18:54:33,386 [INFO] Prueba con matriz C, determinante e inversa con 5 hilos (PY4J)
+2026-04-15 18:54:33,410 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.001689 s | CPU: 0.000053 s
+2026-04-15 18:54:33,410 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.001819 s | CPU: 0.000200 s
+2026-04-15 18:54:33,410 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.001872 s | CPU: 0.000319 s
+2026-04-15 18:54:33,410 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.001813 s | CPU: 0.000205 s
+2026-04-15 18:54:33,410 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.001844 s | CPU: 0.000247 s
+2026-04-15 18:54:54,449 [INFO] ====================================
+2026-04-15 18:54:54,449 [INFO] Prueba con matriz C, determinante e inversa con 5 hilos (PY4J)
+2026-04-15 18:54:54,458 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000214 s | CPU: 0.000139 s
+2026-04-15 18:54:54,458 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000226 s | CPU: 0.000178 s
+2026-04-15 18:54:54,458 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000106 s | CPU: 0.000073 s
+2026-04-15 18:54:54,458 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000141 s | CPU: 0.000103 s
+2026-04-15 18:54:54,458 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000100 s | CPU: 0.000015 s
+2026-04-15 18:54:58,264 [INFO] ====================================
+2026-04-15 18:54:58,264 [INFO] Prueba con matriz C, determinante e inversa con 5 hilos (PY4J)
+2026-04-15 18:54:58,272 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000107 s | CPU: 0.000085 s
+2026-04-15 18:54:58,272 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000183 s | CPU: 0.000228 s
+2026-04-15 18:54:58,272 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000136 s | CPU: 0.000212 s
+2026-04-15 18:54:58,273 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000151 s | CPU: 0.000224 s
+2026-04-15 18:54:58,273 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000147 s | CPU: 0.000235 s
+2026-04-15 18:55:00,742 [INFO] ====================================
+2026-04-15 18:55:00,742 [INFO] Prueba con matriz C, determinante e inversa con 5 hilos (PY4J)
+2026-04-15 18:55:00,749 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000091 s | CPU: 0.000097 s
+2026-04-15 18:55:00,749 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000135 s | CPU: 0.000176 s
+2026-04-15 18:55:00,749 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000222 s | CPU: 0.000295 s
+2026-04-15 18:55:00,749 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000107 s | CPU: 0.000118 s
+2026-04-15 18:55:00,749 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000109 s | CPU: 0.000133 s
+2026-04-15 18:55:02,807 [INFO] ====================================
+2026-04-15 18:55:02,807 [INFO] Prueba con matriz C, determinante e inversa con 5 hilos (PY4J)
+2026-04-15 18:55:02,817 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000491 s | CPU: 0.000045 s
+2026-04-15 18:55:02,817 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000247 s | CPU: 0.000059 s
+2026-04-15 18:55:02,817 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000227 s | CPU: 0.000095 s
+2026-04-15 18:55:02,817 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000099 s | CPU: 0.000049 s
+2026-04-15 18:55:02,818 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000120 s | CPU: 0.000073 s
+====================================
+Promedio de estas pruebas anteriores: Real: 0.00049584 | CPU: 0.00014624 
+* La librería time de python no puede medir el tiempo en CPU de un proceso en Java
+====================================

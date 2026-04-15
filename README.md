@@ -163,7 +163,6 @@ if not jpype.isJVMStarted():
     jpype.startJVM(classpath=classpath)
 ```
 
-
 ```mermaid
       flowchart TB
  subgraph SG2["Máquina virtual Python"]
@@ -192,7 +191,6 @@ if not jpype.isJVMStarted():
     style SG3 fill:#A9BFEF, stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
 ```
 
-
 1. __Preparación del motor Java:__ Es necesario compilar el proyecto con Maven para generar el artefacto en la carpeta target/:
 
 ```bash
@@ -217,10 +215,8 @@ Establece un puente mediante sockets TCP/IP. Requiere iniciar el GatewayServer d
 
 ``` bash
 # Ejecución del servidor (Terminal 1)
-mvn exec:java -Dexec.mainClass="matrixmath.Main"
+mvn exec:java -Dexec.mainClass="matrixmath.Main" -Dexec.args="server"
 ```
-
-
 
 ```mermaid
     
@@ -338,8 +334,8 @@ Resultados obtenidos tras promediar 10 ejecuciones de cálculo matricial 3x3.
 
 | Motor de Integración | Tiempo Promedio (s) |
 | :--- | :--- | 
-| JPype | 0.000647 |
-| Py4J | 0.005136 | 
+| JPype | 0.00086 |
+| Py4J | 0.00478 | 
 
 Conclusión Técnica: La penalización en Py4J se debe a la serialización de datos a través de sockets locales, mientras que JPype opera directamente en la memoria del proceso.
 

@@ -17,7 +17,7 @@ public class Matrix {
         return size;
     }
 
-    public void print() {
+    public void printMatrix() {
         for (double[] row : data) {
             for (double val : row) {
                 System.out.printf("%8.2f ", val);
