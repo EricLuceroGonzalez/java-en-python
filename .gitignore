@@ -2,7 +2,7 @@
 *.class
 errores.txt
 # Carpeta de salida de Maven
-# target/
+target/
 # Archivos de configuración de IDEs
 .settings/
 .project
