@@ -165,8 +165,8 @@ if not jpype.isJVMStarted():
 
 
 ```mermaid
-   flowchart TB
- subgraph SG2["Entorno Python"]
+      flowchart TB
+ subgraph SG2["Máquina virtual Python"]
         B["Librería JPype1"]
         A["Script: test_jpype.py"]
   end
@@ -183,13 +183,13 @@ if not jpype.isJVMStarted():
     B <==> C
     C --> D & E
 
-    style A fill:#ffd43b,stroke:#333,color:#000
+    style A fill:#4B8BBE,stroke:#333,color:#fff
     style C fill:#fff,stroke-dasharray: 5 5
     style D fill:#f89820,stroke:#333,color:#000
     style E fill:#f89820,stroke:#333,color:#000
     style SG1 fill:#b5fbff,stroke:#888,stroke-width:2px,color:#000
-    style SG2 fill:#ffabd4,stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
-    style SG3 stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
+    style SG2 fill:#ffd43b,stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
+    style SG3 fill:#A9BFEF, stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
 ```
 
 
@@ -223,8 +223,9 @@ mvn exec:java -Dexec.mainClass="matrixmath.Main"
 
 
 ```mermaid
+    
     graph LR
-    subgraph SG1 ["Proceso Python"]
+    subgraph SG1 ["Maquina virtual Python"]
         A[Script: test_py4j.py] --> B[JavaGateway Client]
     end
 
@@ -240,13 +241,17 @@ mvn exec:java -Dexec.mainClass="matrixmath.Main"
     style B fill:#444,stroke:#333,color:#ffff
     style D fill:#f89820,stroke:#333,color:#000
     style C fill:#444,color:#fff
+    style E fill:#f89820,color:#000
+    style F fill:#f89820,color:#000
     style SG1 fill:#ffd343,stroke:#888,stroke-width:2px,color:#000
     style SG2 fill:#A9BFEF,stroke:#888,stroke-width:2px,stroke-dasharray: 10 5,color:#000
 ```
 
 1. __Dependencia en Java:__ 
 
-    Añadir al archivo `pom.xml`:
+    Añadir al archivo `pom.xml`. Este bloque le indica al gestor de dependencias que necesita la librería física de Py4J para poder compilar y ejecutarse.
+
+    Sin esta línea, no se puede usar `import py4j.GatewayServer;` en Java, el compilador busca en sus archivos, no encuentra nada y lanza el error: `package py4j does not exist`.
 
     ```XML
     <dependency>
@@ -276,35 +281,21 @@ mvn exec:java -Dexec.mainClass="matrixmath.Main"
     pipenv install py4j
     ```
 
-    ```python
-    from py4j.java_gateway import JavaGateway
-
-    # Conexión al proceso Java externo
-    gateway = JavaGateway()
-    app = gateway.entry_point
-
-    # Acceso a los servicios definidos en el Main de Java
-    service = app.getDetService()
-    matriz = app.createMatrix([[1.0, 0.0], [0.0, 1.0]])
-
-    print(f"Resultado: {service.calculateDeterminant(matriz)}")
-    ```
-
 #### 1. Lanzamiento del Servidor Java (Terminal 1)
 
 Antes de ejecutar el script de Python, el servidor Java debe estar "escuchando". Hay dos formas de lanzarlo:
 
 - __Opción A__: Usando Maven (más fácil). _Maven se encarga de gestionar todas las librerías (incluida la de Py4J)_:
 
-```Bash
-mvn exec:java -Dexec.mainClass="matrixmath.Main"
-```
+    ```Bash
+    mvn exec:java -Dexec.mainClass="matrixmath.Main"
+    ```
 
 - __Opción B__: Usando el JAR directamente. _Incluir la librería de Py4J en el classpath manual_:
 
-```Bash
-java -cp "target/calculadora-matrices-1.0-SNAPSHOT.jar:ruta/a/py4j.jar" matrixmath.Main
-```
+    ```Bash
+    java -cp "target/calculadora-matrices-1.0-SNAPSHOT.jar:ruta/a/py4j.jar" matrixmath.Main
+    ```
 
 _(Nota: En Mac, el separador de carpetas es : y en Windows es ;)._
 
@@ -314,6 +305,22 @@ Una vez que en la Terminal 1 esté el Servidor Py4J activo, se lanza el __client
 
 ```Bash
 pipenv run python test_py4j.py
+```
+
+Por ejemplo ejecutamos: 
+
+```python
+from py4j.java_gateway import JavaGateway
+
+# Conexión al proceso Java externo
+gateway = JavaGateway()
+app = gateway.entry_point
+
+# Acceso a los servicios definidos en el Main de Java
+service = app.getDetService()
+matriz = app.createMatrix([[1.0, 0.0], [0.0, 1.0]])
+
+print(f"Resultado: {service.calculateDeterminant(matriz)}")
 ```
 
 > [!WARNING]  
@@ -377,8 +384,16 @@ Pasos para ejecutar el método `main` de una clase Java utilizando tanto __JPype
     End([Fin: Main Ejecutado])
 
     %% Estilos
+    style Terminal1 fill:#a4fcc6,stroke:#333,stroke-width:2px
+    style Terminal2 fill:#a4fcc6,stroke:#333,stroke-width:2px
     style ChooseLib fill:#f9f,stroke:#333,stroke-width:2px
     style MavenBuild fill:#ff9,stroke:#333,stroke-width:2px
-    style JPypeExec fill:#ccf,stroke:#333,stroke-width:2px
+    style JPypeSetup fill:#ffd343,stroke:#333,color:#000
+    style JPypeStart fill:#ffd343,stroke:#333,color:#00
+    style JPypeImport fill:#ffd343,stroke:#333,color:#00
+    style JPypeExec fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
+    style Py4JSetup fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
+    style Py4JClientConnect fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
+    style Py4JExec fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
     style Py4JServerStart fill:#fcf,stroke:#333,stroke-width:2px
 ```
