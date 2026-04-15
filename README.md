@@ -384,13 +384,13 @@ Pasos para ejecutar el método `main` de una clase Java utilizando tanto __JPype
     End([Fin: Main Ejecutado])
 
     %% Estilos
-    style Terminal1 fill:#a4fcc6,stroke:#333,stroke-width:2px
-    style Terminal2 fill:#a4fcc6,stroke:#333,stroke-width:2px
-    style ChooseLib fill:#f9f,stroke:#333,stroke-width:2px
-    style MavenBuild fill:#ff9,stroke:#333,stroke-width:2px
+    style Terminal1 fill:#a4fcc6,stroke:#333,stroke-width:2px,color:#000
+    style Terminal2 fill:#a4fcc6,stroke:#333,stroke-width:2px,color:#000
+    style ChooseLib fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style MavenBuild fill:#ff9,stroke:#333,stroke-width:2px,color:#000
     style JPypeSetup fill:#ffd343,stroke:#333,color:#000
-    style JPypeStart fill:#ffd343,stroke:#333,color:#00
-    style JPypeImport fill:#ffd343,stroke:#333,color:#00
+    style JPypeStart fill:#ffd343,stroke:#333,color:#000
+    style JPypeImport fill:#ffd343,stroke:#333,color:#000
     style JPypeExec fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
     style Py4JSetup fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
     style Py4JClientConnect fill:#ffd343,stroke:#333,color:#000,stroke-width:2px
