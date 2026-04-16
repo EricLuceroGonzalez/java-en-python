@@ -1,33 +1,30 @@
-2026-04-15 18:53:04,202 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
-2026-04-15 18:53:04,263 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000011 s | CPU: 0.000010 s
-2026-04-15 18:53:04,263 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000016 s | CPU: 0.000034 s
-2026-04-15 18:53:04,264 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000014 s | CPU: 0.000018 s
-2026-04-15 18:53:04,264 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000004 s | CPU: 0.000005 s
-2026-04-15 18:53:04,264 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000033 s | CPU: 0.000258 s
-2026-04-15 18:53:11,230 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
-2026-04-15 18:53:11,289 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000012 s | CPU: 0.000019 s
-2026-04-15 18:53:11,289 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000011 s | CPU: 0.000012 s
-2026-04-15 18:53:11,289 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000012 s | CPU: 0.000027 s
-2026-04-15 18:53:11,289 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000003 s | CPU: 0.000004 s
-2026-04-15 18:53:11,290 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000009 s | CPU: 0.000024 s
-2026-04-15 18:53:14,527 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
-2026-04-15 18:53:14,572 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000012 s | CPU: 0.000021 s
-2026-04-15 18:53:14,578 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000142 s | CPU: 0.000612 s
-2026-04-15 18:53:14,578 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000009 s | CPU: 0.000009 s
-2026-04-15 18:53:14,586 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.008198 s | CPU: 0.023272 s
-2026-04-15 18:53:14,586 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000006 s | CPU: 0.000009 s
-2026-04-15 18:53:17,746 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
-2026-04-15 18:53:17,788 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.000010 s | CPU: 0.000010 s
-2026-04-15 18:53:17,801 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000009 s | CPU: 0.000008 s
-2026-04-15 18:53:17,801 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000028 s | CPU: 0.000056 s
-2026-04-15 18:53:17,802 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.000012 s | CPU: 0.000016 s
-2026-04-15 18:53:17,803 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.000071 s | CPU: 0.000082 s
-2026-04-15 18:53:22,721 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
-2026-04-15 18:53:22,783 [INFO] [Hilo 0] |Det: -26.00 |  Real: 0.000008 s | CPU: 0.000008 s
-2026-04-15 18:53:22,783 [INFO] [Hilo 3] |Det: -26.00 |  Real: 0.001188 s | CPU: 0.004495 s
-2026-04-15 18:53:22,783 [INFO] [Hilo 2] |Det: -26.00 |  Real: 0.007569 s | CPU: 0.020346 s
-2026-04-15 18:53:22,783 [INFO] [Hilo 1] |Det: -26.00 |  Real: 0.000010 s | CPU: 0.000016 s
-2026-04-15 18:53:22,783 [INFO] [Hilo 4] |Det: -26.00 |  Real: 0.007566 s | CPU: 0.020347 s
-====================================
-Promedio de estas pruebas anteriores: Real: 0.00099852 | CPU: 0.00278872
-====================================
+2026-04-16 12:57:58,009 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:57:58,068 [INFO] Tiempo total para 5 hilos: 0.058810 segundos
+2026-04-16 12:57:58,068 [INFO] ====================================
+2026-04-16 12:58:01,659 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:01,726 [INFO] Tiempo total para 5 hilos: 0.066499 segundos
+2026-04-16 12:58:01,726 [INFO] ====================================
+2026-04-16 12:58:04,287 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:04,345 [INFO] Tiempo total para 5 hilos: 0.058238 segundos
+2026-04-16 12:58:04,345 [INFO] ====================================
+2026-04-16 12:58:06,681 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:06,746 [INFO] Tiempo total para 5 hilos: 0.065539 segundos
+2026-04-16 12:58:06,746 [INFO] ====================================
+2026-04-16 12:58:08,894 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:08,958 [INFO] Tiempo total para 5 hilos: 0.063526 segundos
+2026-04-16 12:58:08,958 [INFO] ====================================
+2026-04-16 12:58:11,545 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:11,607 [INFO] Tiempo total para 5 hilos: 0.060947 segundos
+2026-04-16 12:58:11,607 [INFO] ====================================
+2026-04-16 12:58:13,471 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:13,531 [INFO] Tiempo total para 5 hilos: 0.059551 segundos
+2026-04-16 12:58:13,531 [INFO] ====================================
+2026-04-16 12:58:16,221 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:16,280 [INFO] Tiempo total para 5 hilos: 0.058138 segundos
+2026-04-16 12:58:16,280 [INFO] ====================================
+2026-04-16 12:58:18,325 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:18,384 [INFO] Tiempo total para 5 hilos: 0.058999 segundos
+2026-04-16 12:58:18,384 [INFO] ====================================
+2026-04-16 12:58:20,754 [INFO] --- Lanzando 5 hilos con JPype en matriz C, (Python 3.14.2) ---
+2026-04-16 12:58:20,824 [INFO] Tiempo total para 5 hilos: 0.069582 segundos
+2026-04-16 12:58:20,824 [INFO] ====================================

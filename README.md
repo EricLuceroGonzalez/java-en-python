@@ -332,12 +332,80 @@ Resultados obtenidos tras promediar 10 ejecuciones de cálculo matricial 3x3.
 >Calculo de:
 >_Determinante -> Invertibilidad -> Inversa_
 
-| Motor de Integración | Tiempo Promedio (s) |
-| :--- | :--- | 
-| JPype | 0.00086 |
-| Py4J | 0.00478 | 
+### Matriz 3x3
+
+El tiempo total se mide de inicio a un del ciclo de vida.
+
+```bash
+    📊 ANÁLISIS SECUENCIAL (log_ejecucion_jpype.log)
+    Muestras: 12
+    Promedio Java:      0.00000992 s
+    Promedio Algoritmo: 0.04258892 s
+    Promedio Total:     0.42630150 s
+    Desviación Estndar: 0.99473059 s
+    ----------------------------------------
+    📊 ANÁLISIS SECUENCIAL (log_ejecucion_py4j.log)
+    Muestras: 10
+    Promedio Socket:    0.00237300 s
+    Promedio Algoritmo: 0.00019130 s
+    Promedio Total:     0.02779070 s
+    Desviación Estndar: 0.00169938 s
+    ----------------------------------------
+    🚀 ANÁLISIS MULTI-HILO (log_multihilo_jpype.log)
+    Ejecuciones: 10
+    Tiempo Total Promedio: 0.06198290 s
+    Desviación Estándar:   0.00405427 s
+    Mejor Tiempo:          0.05813800 s
+    ----------------------------------------
+    🚀 ANÁLISIS MULTI-HILO (log_multihilo_py4j.log)
+    Ejecuciones: 10
+    Tiempo Total Promedio: 0.00771430 s
+    Desviación Estándar:   0.00237184 s
+    Mejor Tiempo:          0.00587500 s
+    ----------------------------------------
+```
+
+### En matriz 10x10
+
+El tiempo total se mide de inicio a un del ciclo de vida.
+
+```bash
+    📊 ANÁLISIS SECUENCIAL (log_ejecucion_jpype_10x10.log)
+    Muestras: 3
+    Promedio Java:      0.00002233 s
+    Promedio Algoritmo: 0.25030000 s
+    Promedio Total:     2.50360233 s
+    Desviación Estndar: 0.02379751 s
+    ----------------------------------------
+    📊 ANÁLISIS SECUENCIAL (log_ejecucion_py4j_10x10.log)
+    Muestras: 3
+    Promedio Socket:    0.02438633 s
+    Promedio Algoritmo: 0.24847733 s
+    Promedio Total:     2.73245933 s
+    Desviación Estndar: 0.02726121 s
+    ----------------------------------------
+    🚀 ANÁLISIS MULTI-HILO (log_multihilo_jpype_10x10.log)
+    Ejecuciones: 5
+    Tiempo Total Promedio: 0.41597580 s
+    Desviación Estándar:   0.01172115 s
+    Mejor Tiempo:          0.40139400 s
+    ----------------------------------------
+    🚀 ANÁLISIS MULTI-HILO (log_multihilo_py4j_10x10.log)
+    Ejecuciones: 5
+    Tiempo Total Promedio: 0.15529720 s
+    Desviación Estándar:   0.01509784 s
+    Mejor Tiempo:          0.14631400 s
+    ----------------------------------------
+```
 
 Conclusión Técnica: La penalización en Py4J se debe a la serialización de datos a través de sockets locales, mientras que JPype opera directamente en la memoria del proceso.
+
+![alt text](https://github.com/EricLuceroGonzalez/java-en-python/blob/main/comparativa_benchmarking_3x3.png?raw=true)
+
+![alt text](https://github.com/EricLuceroGonzalez/java-en-python/blob/main/comparativa_benchmarking_10x10.png?raw=true)
+
+
+[Discusion sobre los hilos en Jpype](https://github.com/jpype-project/jpype/issues/1169)
 
 ---
 

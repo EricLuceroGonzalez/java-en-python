@@ -1,0 +1,30 @@
+2026-04-16 14:49:31,617 [INFO] ====================================
+2026-04-16 14:49:31,617 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 ejecuciones (PY4J)
+2026-04-16 14:49:33,035 [INFO] PROMEDIO SOCKET: 0.027612 segundos
+2026-04-16 14:49:33,036 [INFO] PROMEDIO ALGORITMO: 0.255803 segundos
+2026-04-16 14:49:33,036 [INFO] TIEMPO TOTAL: 1.418706 segundos
+2026-04-16 14:49:33,036 [INFO] ====================================
+2026-04-16 14:49:38,957 [INFO] ====================================
+2026-04-16 14:49:38,957 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 ejecuciones (PY4J)
+2026-04-16 14:49:40,340 [INFO] PROMEDIO SOCKET: 0.023525 segundos
+2026-04-16 14:49:40,340 [INFO] PROMEDIO ALGORITMO: 0.252788 segundos
+2026-04-16 14:49:40,340 [INFO] TIEMPO TOTAL: 1.383364 segundos
+2026-04-16 14:49:40,340 [INFO] ====================================
+2026-04-16 14:49:41,353 [INFO] ====================================
+2026-04-16 14:49:41,353 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 ejecuciones (PY4J)
+2026-04-16 14:49:42,728 [INFO] PROMEDIO SOCKET: 0.023570 segundos
+2026-04-16 14:49:42,728 [INFO] PROMEDIO ALGORITMO: 0.251074 segundos
+2026-04-16 14:49:42,728 [INFO] TIEMPO TOTAL: 1.374982 segundos
+2026-04-16 14:49:42,728 [INFO] ====================================
+2026-04-16 14:49:43,789 [INFO] ====================================
+2026-04-16 14:49:43,789 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 ejecuciones (PY4J)
+2026-04-16 14:49:45,162 [INFO] PROMEDIO SOCKET: 0.024185 segundos
+2026-04-16 14:49:45,162 [INFO] PROMEDIO ALGORITMO: 0.250052 segundos
+2026-04-16 14:49:45,162 [INFO] TIEMPO TOTAL: 1.373050 segundos
+2026-04-16 14:49:45,162 [INFO] ====================================
+2026-04-16 14:49:46,493 [INFO] ====================================
+2026-04-16 14:49:46,493 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 ejecuciones (PY4J)
+2026-04-16 14:49:47,847 [INFO] PROMEDIO SOCKET: 0.023439 segundos
+2026-04-16 14:49:47,847 [INFO] PROMEDIO ALGORITMO: 0.247010 segundos
+2026-04-16 14:49:47,848 [INFO] TIEMPO TOTAL: 1.354067 segundos
+2026-04-16 14:49:47,848 [INFO] ====================================

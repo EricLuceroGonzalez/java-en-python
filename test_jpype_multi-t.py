@@ -4,7 +4,8 @@ import time
 import os
 from tests_logger import setup_logging
 
-setup_logging("log_multihilo_jpype.log")
+# setup_logging("log_multihilo_jpype.log")
+setup_logging("log_multihilo_jpype_10x10.log")
 
 
 def tarea_matriz_jpype(thread_id, matriz_data):
@@ -24,21 +25,11 @@ def tarea_matriz_jpype(thread_id, matriz_data):
 
         m_java = app_instance.createMatrix(matriz_data)
 
-        inicio_real = time.perf_counter()
-        inicio_cpu = time.process_time()
-
         # --- Ejecución ---
         res = servicio.calculateDeterminant(m_java)
-
-        fin_real = time.perf_counter()
-        fin_cpu = time.process_time()
-
-        t_real = fin_real - inicio_real
-        t_cpu = fin_cpu - inicio_cpu
-
-        print(
-            f"[Hilo {thread_id}] |Det: {res:.2f} |  Real: {t_real:.6f} s | CPU: {t_cpu:.6f} s"
-        )
+        # print(f"[Hilo {thread_id}] Determinante calculado: {res:.16f}")
+        if servicio.isInvertible(m_java):
+            inv = servicio.calculateInverse(m_java)
 
     except Exception as e:
         print(f"[ERROR Hilo {thread_id}] {e}")
@@ -49,20 +40,43 @@ def lanzar_pruebas():
     if not jpype.isJVMStarted():
         jpype.startJVM(classpath=[jar_path])
 
-    data = [[1.0, -3.0, 2.0], [2.0, 5.0, 0.0], [0.0, -1.0, -2.0]]
+    # Datos de prueba (Matriz C)
+    A = [[1, 2], [1, 4]]  # invertible
+    B = [[1.0, -1.0, 0.0], [0.0, 1.0, 0.0], [2.0, 0.0, 1.0]]  # invertible
+    C = [[1.0, -3.0, 2.0], [2.0, 5.0, 0.0], [0.0, -1.0, -2.0]]  # invertible
+    D = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]  # no invertible
+    matrix10 = [
+        [-4.0, -9.0, -1.0, 6.0, 9.0, 4.0, -3.0, 4.0, 4.0, -4.0],
+        [2.0, 4.0, -9.0, -7.0, 8.0, -5.0, 6.0, -9.0, 1.0, 4.0],
+        [-1.0, -6.0, 0.0, 4.0, -5.0, 8.0, 9.0, 1.0, -5.0, 7.0],
+        [-6.0, -8.0, 5.0, -6.0, 9.0, 6.0, 7.0, 5.0, 6.0, 9.0],
+        [2.0, 8.0, -5.0, 0.0, 8.0, -2.0, -5.0, 7.0, -5.0, 1.0],
+        [1.0, -6.0, 0.0, -3.0, -3.0, -4.0, -5.0, -7.0, -2.0, 7.0],
+        [-4.0, 6.0, 6.0, -4.0, 3.0, 2.0, -3.0, 2.0, 2.0, -5.0],
+        [0.0, 7.0, -2.0, -5.0, 0.0, -7.0, 8.0, 5.0, -5.0, -6.0],
+        [-6.0, 0.0, -3.0, -1.0, 1.0, 6.0, 8.0, -4.0, -2.0, -8.0],
+        [-2.0, -9.0, 3.0, -1.0, 3.0, 4.0, -5.0, -4.0, -5.0, -7.0],
+    ]
+    matrix_test = matrix10
     hilos = []
 
     print(
-        f"--- Lanzando 5 hilos con JPype en matriz C, (Python {pysys.version.split()[0]}) ---"
+        f"--- Lanzando 5 hilos con JPype en matriz 10x10, (Python {pysys.version.split()[0]}) ---"
     )
+    t_inicio_total = time.perf_counter()
     for i in range(5):
         # Creación de hilos independientes que ejecutan la misma tarea en JAVA con la misma matriz
-        t = threading.Thread(target=tarea_matriz_jpype, args=(i, data))
+        t = threading.Thread(target=tarea_matriz_jpype, args=(i, matrix_test))
         hilos.append(t)
         t.start()
 
     for t in hilos:
         t.join()
+
+    t_final_total = time.perf_counter()
+    t_total = t_final_total - t_inicio_total
+    print(f"Tiempo total para 5 hilos: {t_total:.6f} segundos")
+    print("===" * 12)
 
 
 if __name__ == "__main__":

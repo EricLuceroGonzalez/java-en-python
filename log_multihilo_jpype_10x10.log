@@ -1,0 +1,15 @@
+2026-04-16 14:31:57,222 [INFO] --- Lanzando 5 hilos con JPype en matriz 10x10, (Python 3.14.2) ---
+2026-04-16 14:31:57,648 [INFO] Tiempo total para 5 hilos: 0.425701 segundos
+2026-04-16 14:31:57,648 [INFO] ====================================
+2026-04-16 14:32:06,605 [INFO] --- Lanzando 5 hilos con JPype en matriz 10x10, (Python 3.14.2) ---
+2026-04-16 14:32:07,007 [INFO] Tiempo total para 5 hilos: 0.401394 segundos
+2026-04-16 14:32:07,007 [INFO] ====================================
+2026-04-16 14:32:09,316 [INFO] --- Lanzando 5 hilos con JPype en matriz 10x10, (Python 3.14.2) ---
+2026-04-16 14:32:09,721 [INFO] Tiempo total para 5 hilos: 0.405518 segundos
+2026-04-16 14:32:09,721 [INFO] ====================================
+2026-04-16 14:32:12,070 [INFO] --- Lanzando 5 hilos con JPype en matriz 10x10, (Python 3.14.2) ---
+2026-04-16 14:32:12,491 [INFO] Tiempo total para 5 hilos: 0.420831 segundos
+2026-04-16 14:32:12,491 [INFO] ====================================
+2026-04-16 14:32:14,957 [INFO] --- Lanzando 5 hilos con JPype en matriz 10x10, (Python 3.14.2) ---
+2026-04-16 14:32:15,384 [INFO] Tiempo total para 5 hilos: 0.426435 segundos
+2026-04-16 14:32:15,384 [INFO] ====================================

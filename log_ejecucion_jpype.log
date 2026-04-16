@@ -1,97 +1,30 @@
-2026-04-15 18:15:54,964 [INFO] ====================================
-2026-04-15 18:15:54,964 [INFO] Prueba con matriz C, determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:15:54,967 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:15:54,967 [INFO] Determinante: -26.0
-2026-04-15 18:15:54,967 [INFO] La matriz es invertible.
-2026-04-15 18:15:54,967 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:15:54,967 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:15:54,967 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:15:54,972 [INFO] PROMEDIO JPYPE: 0.000823 segundos
-2026-04-15 18:15:54,972 [INFO] ====================================
-2026-04-15 18:15:57,187 [INFO] ====================================
-2026-04-15 18:15:57,187 [INFO] Prueba con matriz C, determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:15:57,191 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:15:57,191 [INFO] Determinante: -26.0
-2026-04-15 18:15:57,192 [INFO] La matriz es invertible.
-2026-04-15 18:15:57,192 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:15:57,192 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:15:57,192 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:15:57,198 [INFO] PROMEDIO JPYPE: 0.001123 segundos
-2026-04-15 18:15:57,198 [INFO] ====================================
-2026-04-15 18:15:58,963 [INFO] ====================================
-2026-04-15 18:15:58,963 [INFO] Prueba con matriz C, determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:15:58,967 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:15:58,967 [INFO] Determinante: -26.0
-2026-04-15 18:15:58,967 [INFO] La matriz es invertible.
-2026-04-15 18:15:58,967 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:15:58,967 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:15:58,967 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:15:58,973 [INFO] PROMEDIO JPYPE: 0.000903 segundos
-2026-04-15 18:15:58,973 [INFO] ====================================
-2026-04-15 18:16:00,612 [INFO] ====================================
-2026-04-15 18:16:00,612 [INFO] Prueba con matriz C, determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:16:00,616 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:16:00,616 [INFO] Determinante: -26.0
-2026-04-15 18:16:00,616 [INFO] La matriz es invertible.
-2026-04-15 18:16:00,616 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:16:00,616 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:16:00,616 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:16:00,621 [INFO] PROMEDIO JPYPE: 0.000841 segundos
-2026-04-15 18:16:00,621 [INFO] ====================================
-2026-04-15 18:16:02,504 [INFO] ====================================
-2026-04-15 18:16:02,504 [INFO] Prueba con matriz C, determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:16:02,508 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:16:02,509 [INFO] Determinante: -26.0
-2026-04-15 18:16:02,509 [INFO] La matriz es invertible.
-2026-04-15 18:16:02,509 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:16:02,509 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:16:02,509 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:16:02,512 [INFO] PROMEDIO JPYPE: 0.000735 segundos
-2026-04-15 18:16:02,512 [INFO] ====================================
-2026-04-15 18:42:02,387 [ERROR] Traceback (most recent call last):
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/CalculadoraMatrices/test_jpype.py", line 14, in <module>
-    jpype.startJVM(classpath=[jar_path])
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/.venv/lib/python3.14/site-packages/jpype/_core.py", line 281, in startJVM
-    jvmpath = getDefaultJVMPath()
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/.venv/lib/python3.14/site-packages/jpype/_jvmfinder.py", line 70, in getDefaultJVMPath
-    return finder.get_jvm_path()
-           ~~~~~~~~~~~~~~~~~~~^^
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/.venv/lib/python3.14/site-packages/jpype/_jvmfinder.py", line 184, in get_jvm_path
-    jvm = method()
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/.venv/lib/python3.14/site-packages/jpype/_jvmfinder.py", line 278, in _get_from_bin
-    return self.find_libjvm(java_home)
-           ~~~~~~~~~~~~~~~~^^^^^^^^^^^
-2026-04-15 18:42:02,387 [ERROR] File "/Users/ericlucero/Documents/Academic/Python_Fun/Random_projcts/Java/.venv/lib/python3.14/site-packages/jpype/_jvmfinder.py", line 102, in find_libjvm
-    for root, _, names in sorted(os.walk(java_home), key=lambda t: len(t[0].split(os.sep))):
-                          ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-04-15 18:42:02,387 [ERROR] File "<frozen os>", line 383, in walk
-2026-04-15 18:42:02,387 [ERROR] KeyboardInterrupt
-2026-04-15 18:42:04,103 [INFO] ====================================
-2026-04-15 18:42:04,103 [INFO] Prueba con matriz C determinante e inversa con 10 ejecuciones (JPype)
-2026-04-15 18:42:04,108 [INFO] Matriz formateada en Python: 
-[1.0, -3.0, 2.0]
-[2.0, 5.0, 0.0]
-[0.0, -1.0, -2.0]
-2026-04-15 18:42:04,108 [INFO] Determinante: -26.0
-2026-04-15 18:42:04,108 [INFO] La matriz es invertible.
-2026-04-15 18:42:04,108 [INFO] [0.385, 0.308, 0.385]
-2026-04-15 18:42:04,108 [INFO] [-0.154, 0.077, -0.154]
-2026-04-15 18:42:04,108 [INFO] [0.077, -0.038, -0.423]
-2026-04-15 18:42:04,111 [INFO] PROMEDIO JPYPE: 0.000755 segundos
-2026-04-15 18:42:04,111 [INFO] ====================================
+2026-04-16 14:54:16,425 [INFO] ====================================
+2026-04-16 14:54:16,425 [INFO] Prueba con matriz 3x3 determinante e inversa con 5 ejecuciones (JPype)
+2026-04-16 14:54:16,425 [INFO] PROMEDIO JAVA: 0.000007 segundos
+2026-04-16 14:54:16,425 [INFO] PROMEDIO ALGORITMO: 0.000006 segundos
+2026-04-16 14:54:16,425 [INFO] TIEMPO TOTAL: 0.000326 segundos
+2026-04-16 14:54:16,425 [INFO] ====================================
+2026-04-16 14:54:24,955 [INFO] ====================================
+2026-04-16 14:54:24,955 [INFO] Prueba con matriz 3x3 determinante e inversa con 5 ejecuciones (JPype)
+2026-04-16 14:54:24,955 [INFO] PROMEDIO JAVA: 0.000011 segundos
+2026-04-16 14:54:24,955 [INFO] PROMEDIO ALGORITMO: 0.000014 segundos
+2026-04-16 14:54:24,955 [INFO] TIEMPO TOTAL: 0.000494 segundos
+2026-04-16 14:54:24,955 [INFO] ====================================
+2026-04-16 14:54:27,917 [INFO] ====================================
+2026-04-16 14:54:27,918 [INFO] Prueba con matriz 3x3 determinante e inversa con 5 ejecuciones (JPype)
+2026-04-16 14:54:27,918 [INFO] PROMEDIO JAVA: 0.000011 segundos
+2026-04-16 14:54:27,918 [INFO] PROMEDIO ALGORITMO: 0.000012 segundos
+2026-04-16 14:54:27,918 [INFO] TIEMPO TOTAL: 0.000473 segundos
+2026-04-16 14:54:27,918 [INFO] ====================================
+2026-04-16 14:54:30,192 [INFO] ====================================
+2026-04-16 14:54:30,192 [INFO] Prueba con matriz 3x3 determinante e inversa con 5 ejecuciones (JPype)
+2026-04-16 14:54:30,192 [INFO] PROMEDIO JAVA: 0.000007 segundos
+2026-04-16 14:54:30,192 [INFO] PROMEDIO ALGORITMO: 0.000007 segundos
+2026-04-16 14:54:30,192 [INFO] TIEMPO TOTAL: 0.000339 segundos
+2026-04-16 14:54:30,192 [INFO] ====================================
+2026-04-16 14:54:32,195 [INFO] ====================================
+2026-04-16 14:54:32,195 [INFO] Prueba con matriz 3x3 determinante e inversa con 5 ejecuciones (JPype)
+2026-04-16 14:54:32,196 [INFO] PROMEDIO JAVA: 0.000007 segundos
+2026-04-16 14:54:32,196 [INFO] PROMEDIO ALGORITMO: 0.000006 segundos
+2026-04-16 14:54:32,196 [INFO] TIEMPO TOTAL: 0.000354 segundos
+2026-04-16 14:54:32,196 [INFO] ====================================

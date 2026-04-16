@@ -1,0 +1,20 @@
+2026-04-16 14:31:21,685 [INFO] ====================================
+2026-04-16 14:31:21,685 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 hilos (PY4J)
+2026-04-16 14:31:21,832 [INFO] Tiempo total para 5 hilos: 0.146314 segundos
+2026-04-16 14:31:21,832 [INFO] ====================================
+2026-04-16 14:31:24,403 [INFO] ====================================
+2026-04-16 14:31:24,403 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 hilos (PY4J)
+2026-04-16 14:31:24,551 [INFO] Tiempo total para 5 hilos: 0.147572 segundos
+2026-04-16 14:31:24,551 [INFO] ====================================
+2026-04-16 14:31:26,026 [INFO] ====================================
+2026-04-16 14:31:26,026 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 hilos (PY4J)
+2026-04-16 14:31:26,208 [INFO] Tiempo total para 5 hilos: 0.182128 segundos
+2026-04-16 14:31:26,208 [INFO] ====================================
+2026-04-16 14:31:27,642 [INFO] ====================================
+2026-04-16 14:31:27,642 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 hilos (PY4J)
+2026-04-16 14:31:27,792 [INFO] Tiempo total para 5 hilos: 0.149862 segundos
+2026-04-16 14:31:27,792 [INFO] ====================================
+2026-04-16 14:31:29,175 [INFO] ====================================
+2026-04-16 14:31:29,175 [INFO] Prueba con matriz 10x10, determinante e inversa con 5 hilos (PY4J)
+2026-04-16 14:31:29,326 [INFO] Tiempo total para 5 hilos: 0.150610 segundos
+2026-04-16 14:31:29,326 [INFO] ====================================
