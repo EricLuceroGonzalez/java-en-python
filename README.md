@@ -209,6 +209,13 @@ pipenv install jpype1
     jar_path = os.path.join("target", "calculadora-matrices-1.0-SNAPSHOT.jar")
 ```
 
+### Por qué usar Jpype ([según la documentación oficial](https://jpype.readthedocs.io/en/latest/userguide.html#why-use-jpype))
+
+`JPype` facilita la integración de Python y Java, permitiendo a los desarrolladores:
+* Acceder a las bibliotecas de Java directamente desde el código Python.
+* Depurar estructuras de datos Java de forma interactiva mediante herramientas de Python.
+* Aprovechar la flexibilidad de Python para la computación científica y la robustez de Java para aplicaciones empresariales.
+
 ### Py4J (Arquitectura Cliente-Servidor)
 
 Establece un puente mediante sockets TCP/IP. Requiere iniciar el GatewayServer desde Java antes de conectar desde Python.
@@ -327,14 +334,20 @@ print(f"Resultado: {service.calculateDeterminant(matriz)}")
 
 ## 📊 Análisis de Rendimiento (Benchmark)
 
-Resultados obtenidos tras promediar 10 ejecuciones de cálculo matricial 3x3.
+Resultados obtenidos tras promediar 5 ejecuciones de cálculo matricial 3x3 y 10x10.
 
->Calculo de:
->_Determinante -> Invertibilidad -> Inversa_
+>El programa calcula:
+>_Determinante e Inversa_
 
-### Matriz 3x3
+* Modo secuencial: 5 ejecuciones del programa una tras otra.
+* Modo multi-hilo: 5 hilos con `threading.Thread()` de python.
 
-El tiempo total se mide de inicio a un del ciclo de vida.
+
+### Resultados con Matriz 3x3
+
+El tiempo `Total` se mide al inicio y al fin del ciclo de vida del programa usando la función `time.perf_counter()`.
+
+![alt text](https://github.com/EricLuceroGonzalez/java-en-python/blob/main/comparativa_benchmarking_3x3.png?raw=true)
 
 ```bash
     📊 ANÁLISIS SECUENCIAL (log_ejecucion_jpype.log)
@@ -365,9 +378,9 @@ El tiempo total se mide de inicio a un del ciclo de vida.
     ----------------------------------------
 ```
 
-### En matriz 10x10
+### Resultados con matriz 10x10
 
-El tiempo total se mide de inicio a un del ciclo de vida.
+El tiempo `Total` se mide al inicio y al fin del ciclo de vida.
 
 ```bash
     📊 ANÁLISIS SECUENCIAL (log_ejecucion_jpype_10x10.log)
@@ -398,14 +411,42 @@ El tiempo total se mide de inicio a un del ciclo de vida.
     ----------------------------------------
 ```
 
-Conclusión Técnica: La penalización en Py4J se debe a la serialización de datos a través de sockets locales, mientras que JPype opera directamente en la memoria del proceso.
-
-![alt text](https://github.com/EricLuceroGonzalez/java-en-python/blob/main/comparativa_benchmarking_3x3.png?raw=true)
-
 ![alt text](https://github.com/EricLuceroGonzalez/java-en-python/blob/main/comparativa_benchmarking_10x10.png?raw=true)
 
 
-[Discusion sobre los hilos en Jpype](https://github.com/jpype-project/jpype/issues/1169)
+🔗 [Discusion sobre los hilos en Jpype (Desarrolladores del proyecto)](https://github.com/jpype-project/jpype/issues/1169)
+
+🔗 [Sobre los Threads en Jpype (Documentación del proyecto)](https://jpype.readthedocs.io/en/latest/userguide.html#threading)
+
+🔗 [Sobre los Threads en Py4j (Documentación del proyecto)](https://www.py4j.org/faq.html#is-py4j-thread-safe)
+
+### Comentarios sobre Jpype
+
+* `Jpype` permite a python la iteracción entre las librerías Java y Python, así como el uso y desarrolo de estructuras y objetos. Todo esto ocurre en un solo proceso de memoria compartida. `JPype` conecta Python y Java a nivel nativo utilizando la Interfaz Nativa de Java (JNI), sin ls necesidad de serializar objetos al comunicarse.
+* `Jpype` requiere que la JVM se inicie antes de interactuar con Java.
+* `Jpype` es más rápido en ejecuciones secuenciales, tanto en instancias pequeñas como grandes.
+* `Jpype` comparte memoria con la JVM en todos los procesos.
+* `Jpype` tiene problemas para trabajar con hilos desde python. Hay que conocer a profundidad cómo funciona la integración para poder optimizar los hilos, por ejemplo __dónde y cómo__ hacer el  `detach` de cada proceso.
+* Los hilos de Python son "extraños" para la JVM y deben ser adjuntados (attach) manualmente o automáticamente para que la JVM reserve un stack de memoria para ellos. Si no se _desadjuntan_ (detach), se producen fugas de memoria.
+  
+### Comentarios sobre Py4j
+
+* `Py4j` permite que los programas Python que se ejecutan en un intérprete de Python accedan dinámicamente a objetos Java en una JVM. También permite que los programas Java llamen a objetos Python.
+* `Py4j` mantiene los procesos aislados entre la JVM y Python
+* `Py4j` funciona bajo una arquitectura de Cliente-Servidor totalmente independiente, comunicándose a través de sockets de red local (TCP/IP).
+* `Py4j`. Python corre en un PID y la JVM corre en otro PID totalmente distinto. No comparten memoria RAM de forma directa.
+* `Py4j`. Por defecto, Python envía comandos al puerto 25333 y Java responde por el puerto 25334.
+* `Py4j` no se ve afectada por el Global Interpreter Lock (GIL) de Python. Cada hilo de Python abre su propia conexión, lo que permite que Java use todos los núcleos del procesador sin interferencias.
+
+### Comparativa de Gestión de Memoria
+
+| Característica | JPype | Py4J |
+| --- | --- | --- | 
+Arquitectura |Proceso Único (In-process) |Multi-proceso (Client-Server) |
+Comunicación |JNI / Memoria Compartida |Sockets TCP/IP (Localhost)
+| Transferencia de Datos | Punteros/Proxies (Muy rápida) |Serialización (Más lenta) |
+| Gestión de Hilos | Requiere `attach/detach` | Conexiones independientes por hilo |
+| Estabilidad | Sensible a fallos de JNI (Crash del proceso) | Robusta (Si uno cae, el otro sobrevive) |
 
 ---
 
